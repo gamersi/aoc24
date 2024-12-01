@@ -4,3 +4,6 @@
 *.json
 run.go
 aoc_run
+
+# input files (they should not be commited)
+day*.txt

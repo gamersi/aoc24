@@ -45,10 +45,10 @@ func (p Point) Left() Point {
 
 // Return manhattan distance (abs(x)+abs(y))
 func (p Point) Manhattan() int {
-	return abs(p.X) + abs(p.Y)
+	return Abs(p.X) + Abs(p.Y)
 }
 
-func abs(x int) int {
+func Abs(x int) int {
 	if x < 0 {
 		return -x
 	}
