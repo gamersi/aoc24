@@ -27,13 +27,14 @@ func Solve(r io.Reader) any {
 	return sum
 }
 
-const OPERATORS = "+*"
-
 func lineValid(res int, nums []int) bool {
 	bruteforceRes := 0
+	// equivalent to 2^(len(nums)-1) iterations
 	for i := 0; i < 1<<uint(len(nums)-1); i++ {
+		// twice because we need to check for both + and *
 		for j := 0; j < 1<<uint(len(nums)-1); j++ {
 			bruteforceRes = nums[0]
+			// iterate over the bits of i and j to determine if we should add or multiply
 			for k := 0; k < len(nums)-1; k++ {
 				if j&(1<<uint(k)) > 0 {
 					bruteforceRes += nums[k+1]
