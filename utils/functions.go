@@ -6,7 +6,12 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"regexp"
+	"strconv"
 )
+
+// regex for integers
+var intRegex = regexp.MustCompile(`-?\d+`)
 
 // Greatest Common Denominator
 func Gcd(a, b int64) int64 {
@@ -52,6 +57,23 @@ func ReadLines(r io.Reader) []string {
 	}
 	err := scanner.Err()
 	Check(err, "error reading lines")
+
+	return result
+}
+
+func GetInts(s string) []int {
+	matches := intRegex.FindAllString(s, -1)
+	result := make([]int, len(matches))
+	for i, match := range matches {
+		result[i] = Atoi(match)
+	}
+
+	return result
+}
+
+func Atoi(s string) int {
+	result, err := strconv.Atoi(s)
+	Check(err, "error converting %s to int", s)
 
 	return result
 }
