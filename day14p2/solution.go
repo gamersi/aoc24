@@ -55,6 +55,7 @@ func Solve(r io.Reader) any {
 			minStep = step
 		}
 		if minDoubleOccurences <= 1 {
+			printBoard(bots, boardWidth, boardHeight)
 			break
 		}
 	}
