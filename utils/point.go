@@ -28,6 +28,13 @@ func (p Point) Add(p2 Point) Point {
 	return r
 }
 
+// Return the difference of two points
+func (p Point) Sub(p2 Point) Point {
+	r := Point{p.X - p2.X, p.Y - p2.Y}
+
+	return r
+}
+
 // Multiply point by a scalar
 func (p Point) Scale(factor int) Point {
 	return Point{p.X * factor, p.Y * factor}
