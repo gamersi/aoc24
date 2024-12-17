@@ -77,3 +77,39 @@ func Atoi(s string) int {
 
 	return result
 }
+
+func UIntsToStrings(uints []uint64) []string {
+	result := make([]string, len(uints))
+	for i, val := range uints {
+		result[i] = strconv.FormatUint(val, 10)
+	}
+
+	return result
+}
+
+func IntsToStrings(ints []int) []string {
+	result := make([]string, len(ints))
+	for i, val := range ints {
+		result[i] = strconv.Itoa(val)
+	}
+
+	return result
+}
+
+func StringsToInts(strings []string) []int {
+	result := make([]int, len(strings))
+	for i, str := range strings {
+		result[i] = Atoi(str)
+	}
+
+	return result
+}
+
+func StringsToUInts(strings []string) []uint64 {
+	result := make([]uint64, len(strings))
+	for i, str := range strings {
+		result[i], _ = strconv.ParseUint(str, 10, 64)
+	}
+
+	return result
+}
