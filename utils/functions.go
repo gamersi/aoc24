@@ -113,3 +113,16 @@ func StringsToUInts(strings []string) []uint64 {
 
 	return result
 }
+
+func RemoveDuplicates[T comparable](slice []T) []T {
+	unique := make(map[T]bool)
+	result := []T{}
+
+	for _, item := range slice {
+		if !unique[item] {
+			unique[item] = true
+			result = append(result, item)
+		}
+	}
+	return result
+}
