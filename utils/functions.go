@@ -61,6 +61,31 @@ func ReadLines(r io.Reader) []string {
 	return result
 }
 
+// Read until \n\n and return blocks of lines
+func ReadBlocks(r io.Reader) [][]string {
+	result := [][]string{}
+
+	scanner := bufio.NewScanner(r)
+	block := []string{}
+	for scanner.Scan() {
+		line := scanner.Text()
+		if line == "" {
+			result = append(result, block)
+			block = []string{}
+		} else {
+			block = append(block, line)
+		}
+	}
+	err := scanner.Err()
+	Check(err, "error reading blocks")
+
+	if len(block) > 0 {
+		result = append(result, block)
+	}
+
+	return result
+}
+
 func GetInts(s string) []int {
 	matches := intRegex.FindAllString(s, -1)
 	result := make([]int, len(matches))
